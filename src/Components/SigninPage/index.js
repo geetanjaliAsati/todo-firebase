@@ -2,9 +2,9 @@ import React, { useEffect } from "react";
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { initializeApp } from "firebase/app";
 import firebaseConfig from "../../config/firebase";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 function SignIn() {
-  const history = useHistory();
+  const navigate = useNavigate();
 const app = initializeApp(firebaseConfig);
   const provider = new GoogleAuthProvider();
   const signIn = () => {
@@ -20,7 +20,7 @@ const app = initializeApp(firebaseConfig);
         const user = result.user;
         // ...
         console.log(user);
-        history.push("/profile");
+        navigate("/profile");
       })
       .catch((error) => {
         // Handle Errors here.
