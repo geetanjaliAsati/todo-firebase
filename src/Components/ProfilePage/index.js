@@ -30,9 +30,9 @@ const MenuProps = {
 
 function Profile() {
   const navigate = useNavigate();
-  const goToSignIn = () => {
-    navigate("/home");
-  };
+  // const goToSignIn = () => {
+  //   navigate("/home");
+  // };
   const loggedInUser = JSON.parse(localStorage.getItem("user"));
   const [candidateInfo, setCandidateInfo] = React.useState({
     name: "",
@@ -56,16 +56,16 @@ function Profile() {
     // On autofill we get a stringified value.
   };
 
-  const handleEducationDomainChange = (event) => {
-    setCandidateInfo((p) => {
-      return { ...p, educationDomains: event.target.value };
-    });
-  };
-  const handleLocationChange = (event) => {
-    setCandidateInfo((p) => {
-      return { ...p, location: event.target.value };
-    });
-  };
+  // const handleEducationDomainChange = (event) => {
+  //   setCandidateInfo((p) => {
+  //     return { ...p, educationDomains: event.target.value };
+  //   });
+  // };
+  // const handleLocationChange = (event) => {
+  //   setCandidateInfo((p) => {
+  //     return { ...p, location: event.target.value };
+  //   });
+  // };
 
   const submitInfo = async (e) => {
     let userInfo = JSON.parse(localStorage.getItem("user"));
@@ -91,18 +91,16 @@ function Profile() {
       name: "",
       email: "",
       phone: "",
+      location:"",
+      educationDomains: "",
       skills: [],
-      domain: [],
-      socialMedia: {
-        linkedIn: "",
-        github: "",
-        twitter: "",
-        instagram: "",
-      },
+      linkedIn: "",
     });
   };
  
   }
+
+  
   return (
     <div
       style={{

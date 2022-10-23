@@ -1,16 +1,15 @@
 import React, { useEffect } from "react";
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { initializeApp } from "firebase/app";
-import firebaseConfig from "../../config/firebase";
+import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+
+import {auth} from "../../config/firebaseinitialize";
 import { useNavigate } from "react-router-dom";
 function SignIn() {
   const navigate = useNavigate();
-const app = initializeApp(firebaseConfig);
+
   const provider = new GoogleAuthProvider();
   const signIn = () => {
     console.log("signIn called");
-
-    const auth = getAuth();
+   
     signInWithPopup(auth, provider)
       .then((result) => {
         // This gives you a Google Access Token. You can use it to access the Google API.
@@ -18,13 +17,17 @@ const app = initializeApp(firebaseConfig);
         const token = credential.accessToken;
         // The signed-in user info.
         const user = result.user;
+        console.log(user, "token", token);
+        localStorage.setItem("user", JSON.stringify(user));  //store in Local storage
+        localStorage.setItem("token", token);
+
         // ...
-        console.log(user);
+       
         navigate("/profile");
       })
       .catch((error) => {
         // Handle Errors here.
-        alert(error);
+        alert("error");
         const errorCode = error.code;
         const errorMessage = error.message;
         // The email of the user's account used.
