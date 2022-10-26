@@ -1,6 +1,13 @@
-# Deployed link-  https://todo-firebase-tau.vercel.app/
+### `Deployed link` [https://todo-firebase-tau.vercel.app/](https://todo-firebase-tau.vercel.app/)
+ #
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+* Built Todo App using ReactJs which is integrated with Firebase.
+* User have to login with Google and fill the Profile form to get the
+* access for the Todo App.
+* Used Firebase Cloud store for storing the user data in the backend
+
+
+
 
 ## Available Scripts
 
