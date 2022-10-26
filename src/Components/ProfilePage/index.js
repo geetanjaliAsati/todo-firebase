@@ -117,7 +117,8 @@ function Profile() {
           }}
         >
           User Profile
-        </h2>
+        </h2> <p style={{textAlign:"center"}}>Please fill out the form to get access for the Todo App !</p>
+        
         <div
           style={{
             maxWidth: "1100px",
@@ -127,6 +128,7 @@ function Profile() {
             borderRadius: "20px",
           }}
         >
+         
           <Grid
             container
             spacing={3}
