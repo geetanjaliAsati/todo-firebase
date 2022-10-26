@@ -119,6 +119,8 @@ function Profile() {
           User Profile
         </h2> <p style={{textAlign:"center"}}>Please fill out the form to get access for the Todo App !</p>
         
+          
+        </h2>
         <div
           style={{
             maxWidth: "1100px",
