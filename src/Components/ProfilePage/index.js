@@ -36,9 +36,9 @@ function Profile() {
   const loggedInUser = JSON.parse(localStorage.getItem("user"));
   const [candidateInfo, setCandidateInfo] = React.useState({
     name: "",
-    email: "",
+    email: loggedInUser.email,
     phone: "",
-    location:"",
+    location: "",
     educationDomains: "",
     skills: [],
     linkedIn: "",
@@ -85,111 +85,121 @@ function Profile() {
       alert("Error occored");
       console.error("Error adding document: ", e);
     }
-  {
-   
+
     setCandidateInfo({
       name: "",
       email: "",
       phone: "",
-      location:"",
+      location: "",
       educationDomains: "",
       skills: [],
       linkedIn: "",
     });
   };
- 
-  }
 
-  
   return (
     <div
       style={{
-        backgroundColor: "#e5e5e5",
+        backgroundColor: "#FFF",
         minHeight: "100vh",
-        paddingTop: "50px",
+        paddingTop: "10px",
       }}
     >
       <form onSubmit={(e) => submitInfo(e)}>
-      <div
-        style={{
-          maxWidth: "1100px",
-          margin: "50px 20px 0 20px ",
-          padding: "20px",
-          paddingTop: "50px",
-          borderRadius: "20px",
-        }}
-      >
-        <Grid
-          container
-          spacing={3}
-          maxWidth="80%"
-          p={4}
-          sx={{
-            backgroundColor: "#FFFFFF",
-            boxShadow: "0px 0px 15px #DCD7D7",
-            margin: "auto",
-            fontSize: "15px",
+        <h2
+          style={{
+            textAlign: "center",
+            color: "purple",
+            fontWeight: "600",
+            fontSize: "2rem",
+            paddingTop: "0px",
+            paddingBottom: "0px",
           }}
         >
-          <Grid item xs={12} md={6}>
-            <label>Name<span style={{ color: "red" }}>*</span></label>
-            <TextField
-              required
-              value={candidateInfo.name}
-              onChange={(e) => {
-                setCandidateInfo((p) => {
-                  return { ...p, name: e.target.value };
-                });
-              }}
-              size="small"
-              fullWidth
-              id="outlined-basic"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item xs={12} md={6}>
-            <label>
-              email<span style={{ color: "red" }}>*</span>
-            </label>
-            <TextField
-              // disabled
-              required
-              type="email"
-              value={candidateInfo.email}
-              onChange={(e) => {
-                setCandidateInfo((p) => {
-                  return { ...p, email: e.target.value };
-                });
-              }}
-              size="small"
-              fullWidth
-              id="outlined-basic"
-              variant="outlined"
-            />
-          </Grid>
+          User Profile
+        </h2>
+        <div
+          style={{
+            maxWidth: "1100px",
+            margin: "50px 20px 0 50px ",
+            padding: "20px",
+            // paddingTop: "50px",
+            borderRadius: "20px",
+          }}
+        >
+          <Grid
+            container
+            spacing={3}
+            maxWidth="80%"
+            p={4}
+            sx={{
+              backgroundColor: "#FFFFFF",
+              boxShadow: "0px 0px 15px #DCD7D7",
+              margin: "auto",
+              fontSize: "15px",
+            }}
+          >
+            <Grid item xs={12} md={6}>
+              <label>
+                Name<span style={{ color: "red" }}>*</span>
+              </label>
+              <TextField
+                required
+                value={candidateInfo.name}
+                onChange={(e) => {
+                  setCandidateInfo((p) => {
+                    return { ...p, name: e.target.value };
+                  });
+                }}
+                size="small"
+                fullWidth
+                id="outlined-basic"
+                variant="outlined"
+              />
+            </Grid>
+            <Grid item xs={12} md={6}>
+              <label>
+                email<span style={{ color: "red" }}>*</span>
+              </label>
+              <TextField
+                disabled
+                required
+                type="email"
+                value={candidateInfo.email}
+                onChange={(e) => {
+                  setCandidateInfo((p) => {
+                    return { ...p, email: e.target.value };
+                  });
+                }}
+                size="small"
+                fullWidth
+                id="outlined-basic"
+                variant="outlined"
+              />
+            </Grid>
 
-          <Grid item xs={12} md={6}>
-            <label>
-              Phone no.<span style={{ color: "red" }}>*</span>
-            </label>
-            <TextField
-              required
-              type="number"
-              inputProps={{ maxLength: 10 }}
-              value={candidateInfo.phone}
-              onChange={(e) => {
-                setCandidateInfo((p) => {
-                  return { ...p, phone: e.target.value };
-                });
-              }}
-              size="small"
-              fullWidth
-              id="outlined-basic"
-              variant="outlined"
-            />
-          </Grid>
+            <Grid item xs={12} md={6}>
+              <label>
+                Phone no.<span style={{ color: "red" }}>*</span>
+              </label>
+              <TextField
+                required
+                type="number"
+                inputProps={{ maxLength: 10 }}
+                value={candidateInfo.phone}
+                onChange={(e) => {
+                  setCandidateInfo((p) => {
+                    return { ...p, phone: e.target.value };
+                  });
+                }}
+                size="small"
+                fullWidth
+                id="outlined-basic"
+                variant="outlined"
+              />
+            </Grid>
 
-          {/* <Grid item xs={12} md={12}>
+            {/* <Grid item xs={12} md={12}>
             <label>Education</label>
             <TextField
               value={candidateInfo.education}
@@ -205,7 +215,7 @@ function Profile() {
             />
           </Grid> */}
 
-          {/* <Grid item xs={12} md={12}>
+            {/* <Grid item xs={12} md={12}>
             <label>Experience</label>
             <TextField
               value={candidateInfo.experience}
@@ -221,22 +231,22 @@ function Profile() {
             />
           </Grid> */}
 
-          <Grid item xs={12} md={6}>
-            <label>linkedIn</label>
-            <TextField
-              value={candidateInfo.linkedIn}
-              onChange={(e) => {
-                setCandidateInfo((p) => {
-                  return { ...p, linkedIn: e.target.value };
-                });
-              }}
-              size="small"
-              fullWidth
-              id="outlined-basic"
-              variant="outlined"
-            />
-          </Grid>
-          {/* <Grid item xs={12} md={6}>
+            <Grid item xs={12} md={6}>
+              <label>linkedIn</label>
+              <TextField
+                value={candidateInfo.linkedIn}
+                onChange={(e) => {
+                  setCandidateInfo((p) => {
+                    return { ...p, linkedIn: e.target.value };
+                  });
+                }}
+                size="small"
+                fullWidth
+                id="outlined-basic"
+                variant="outlined"
+              />
+            </Grid>
+            {/* <Grid item xs={12} md={6}>
             <label>Twitter</label>
             <TextField
               value={candidateInfo.socialMedia.twitter}
@@ -258,7 +268,7 @@ function Profile() {
             />
           </Grid> */}
 
-          {/* <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
             <label>Github</label>
             <TextField
               value={candidateInfo.socialMedia.github}
@@ -276,7 +286,7 @@ function Profile() {
               variant="outlined"
             />
           </Grid> */}
-          {/* <Grid item xs={12} md={6}>
+            {/* <Grid item xs={12} md={6}>
             <label>Instagram</label>
             <TextField
               value={candidateInfo.socialMedia.instagram}
@@ -298,35 +308,38 @@ function Profile() {
             />
           </Grid> */}
 
-          <Grid item xs={12} md={6}>
-            <la>
-            Skills
-            </la>
-            <FormControl required sx={{ width: "100%" }}>
-              <InputLabel id="demo-multiple-checkbox-label">Skills</InputLabel>
-              <Select
-                labelId="demo-multiple-checkbox-label"
-                id="demo-multiple-checkbox"
-                multiple
-                value={candidateInfo.skills}
-                onChange={handleSkillsChange}
-                input={<OutlinedInput label="Tag" />}
-                renderValue={(selected) => selected.join(", ")}
-                MenuProps={MenuProps}
-              >
-                {skillsList.map((name) => (
-                  <MenuItem key={name} value={name}>
-                    <Checkbox
-                      checked={candidateInfo.skills.indexOf(name) > -1}
-                    />
-                    <ListItemText primary={name} />
-                  </MenuItem>
-                ))}
-              </Select>
-            </FormControl>
-          </Grid>
-          <Grid item lg={6} md={6} xs={12}>
-              <label>Location*</label>
+            <Grid item xs={12} md={6}>
+              
+              <la>
+                Tags<span style={{ color: "red" }}>*</span>
+              </la>
+              <FormControl required sx={{ width: "100%" }}>
+                <InputLabel id="demo-multiple-checkbox-label">
+                  Skills
+                </InputLabel>
+                <Select
+                  labelId="demo-multiple-checkbox-label"
+                  id="demo-multiple-checkbox"
+                  multiple
+                  value={candidateInfo.skills}
+                  onChange={handleSkillsChange}
+                  input={<OutlinedInput label="Tag" />}
+                  renderValue={(selected) => selected.join(", ")}
+                  MenuProps={MenuProps}
+                >
+                  {skillsList.map((name) => (
+                    <MenuItem key={name} value={name}>
+                      <Checkbox
+                        checked={candidateInfo.skills.indexOf(name) > -1}
+                      />
+                      <ListItemText primary={name} />
+                    </MenuItem>
+                  ))}
+                </Select>
+              </FormControl>
+            </Grid>
+            <Grid item lg={6} md={6} xs={12}>
+              <label>Location</label>
               <TextField
                 fullWidth
                 id="outlined-basic"
@@ -342,8 +355,8 @@ function Profile() {
                 }}
               />
             </Grid>
-          <Grid item lg={6} md={6} xs={12}>
-              <label>Education*</label>
+            <Grid item lg={6} md={6} xs={12}>
+              <label>Education</label>
               <TextField
                 fullWidth
                 id="outlined-basic"
@@ -359,25 +372,23 @@ function Profile() {
                 }}
               />
             </Grid>
-        
- 
-          {/* --------------------------------------------------- */}
 
-          <Grid item lg={12}>
-            <Button
-              variant="contained"
-              color="secondary"
-              size="small"
-              type="submit"
-              sx={{ float: "right", width: "150px" }}
-              
+            {/* --------------------------------------------------- */}
+
+            <Grid item lg={12}>
+              <Button
+                variant="contained"
+                color="secondary"
+                size="small"
+                type="submit"
+                sx={{ float: "left", width: "150px" }}
               >
-              {/** onClick={goToSignIn} */} 
-              Login
-            </Button>
+                {/** onClick={goToSignIn} */}
+                Login
+              </Button>
+            </Grid>
           </Grid>
-        </Grid>
-      </div>
+        </div>
       </form>
     </div>
   );
